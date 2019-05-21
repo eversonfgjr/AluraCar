@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Escolha</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+  <ion-slides pager="true">
+    <ion-slide *ngFor="let foto of carro.fotos">
+      <img src="{{ foto}}" />
+    </ion-slide>      
+  </ion-slides>
+
+
+  <!-- O ion-item-group funciona como uma div em um html, servindo somente para organizar os componentes da tela-->
+  <ion-item-group>
+    <ion-item-divider color="light">
+      <ion-icon name="car"></ion-icon>
+      VEÍCULO
+    </ion-item-divider>
+    <ion-item>{{ carro.nome }}</ion-item>
+    <ion-item>{{ carro.preco }}</ion-item>
+  </ion-item-group>
+  
+  <ion-item-group>
+    <ion-item-divider color="light">
+      <ion-icon name="options"></ion-icon>
+      ACESSÓRIOS
+    </ion-item-divider>
+    <ion-item *ngFor="let acessorio of acessorios">
+      <ion-label>
+        <h2>{{ acessorio.nome }}</h2>
+        <h4>R$ {{ acessorio.preco }}</h4>
+      </ion-label> 
+      <!-- #toogle é uma variável de template -->
+      <ion-toggle #toggle color="secondary" (ionChange)="atualizaTotal(toggle.checked, acessorio)">
+      </ion-toggle> 
+    </ion-item> 
+
+  </ion-item-group>
+
+  <ion-item-divider color="light">
+    <span item-right>TOTAL: R$ {{ precoTotal }} </span>
+  </ion-item-divider>
+  
+  <!-- O edge diz que a posição do componente deve ficar entra o cabeçalho 
+    e o conteúdo -->
+  <ion-fab top right edge>
+    <button ion-fab mini (click)="avancaCadastro()">
+      <ion-icon name="arrow-dropright"></ion-icon>
+    </button>
+  </ion-fab>      
+
+</ion-content>

@@ -1,14 +1,26 @@
-<ion-header>
+<ion-header text-align="center" translucent="true">
   <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
+    <ion-title>Alura Car</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+    <ion-list>
+
+      <!--binding de evento para o evento click	-->
+      <ion-item *ngFor="let carro of carros" (click)="selecionaCarro(carro)">
+      	
+      	<!--expressao angular -->
+      	<h2>{{carro.nome}}</h2>
+      	<p>R${{carro.preco}}</p>
+
+      </ion-item>			
+      
+    </ion-list>  
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title>Footer</ion-title>
+  </ion-toolbar>
+</ion-footer>
